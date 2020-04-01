@@ -1,4 +1,3 @@
-![App Brewery Banner](Documentation/AppBreweryBanner.png)
 
 # Egg Timer
 
@@ -23,5 +22,9 @@ You’ll be building a beautiful egg timer app to boil your eggs to perfection d
 
 >This is a companion project to The App Brewery's Complete App Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
 
-![End Banner](Documentation/readme-end-banner.png)
+## Output
 
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/35194820/78123952-f16b5800-7449-11ea-90ae-82920f808fec.gif"
+    />
+</div>
