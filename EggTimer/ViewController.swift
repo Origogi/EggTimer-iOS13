@@ -14,22 +14,28 @@ class ViewController: UIViewController {
     
     var timer : Timer?
     
-    let eggTimes = ["Soft" :5, "Medium" : 7 , "Hard" : 12]
+    let eggTimes = ["Soft" :5000, "Medium" : 7000 , "Hard" : 12000]
 
     @IBOutlet weak var titleLabel: UILabel!
 
+    @IBOutlet weak var progressView: UIProgressView!
     @IBAction func onPressed(_ sender: UIButton) {
         
         titleLabel.text = "Running"
         
         if timer == nil {
-            
             secondsRemaining = eggTimes[sender.currentTitle!]!
+            let totalTime = secondsRemaining
+            
+            self.progressView.setProgress(0, animated: true)
 
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (it : Timer) in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (it : Timer) in
                 if self.secondsRemaining > 0 {
                     print ("\(self.secondsRemaining) seconds")
-                    self.secondsRemaining -= 1
+                    self.secondsRemaining -= 100
+                    let percent = Float(totalTime - self.secondsRemaining) / Float(totalTime)
+                    self.progressView.setProgress(percent, animated: true)
+
                 } else {
                     self.secondsRemaining = 60
                     self.titleLabel.text = "Done"
