@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class ViewController: UIViewController {
     
@@ -17,6 +19,8 @@ class ViewController: UIViewController {
     let eggTimes = ["Soft" :5000, "Medium" : 7000 , "Hard" : 12000]
 
     @IBOutlet weak var titleLabel: UILabel!
+    var player: AVAudioPlayer!
+
 
     @IBOutlet weak var progressView: UIProgressView!
     @IBAction func onPressed(_ sender: UIButton) {
@@ -37,12 +41,22 @@ class ViewController: UIViewController {
                     self.progressView.setProgress(percent, animated: true)
 
                 } else {
+
                     self.secondsRemaining = 60
                     self.titleLabel.text = "Done"
                     it.invalidate()
                     self.timer = nil
+                    self.playSound()
+
                 }
             }
         }
+    }
+    
+    func playSound() {
+
+        let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player?.play()
     }
 }
